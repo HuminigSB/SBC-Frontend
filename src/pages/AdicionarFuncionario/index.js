@@ -4,7 +4,7 @@ import api from '../../services/api'
 import {toast} from 'react-toastify'
 import history from '../../services/history'
 
-import Logo from '../../assets/logo-white.png'
+import Logo from '../../assets/adcFunc.svg'
 import { Form, WrapperItens, Input, Button, Select} from './styles'
 
 const AdicionarFuncionario = () => {

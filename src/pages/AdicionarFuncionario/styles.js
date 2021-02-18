@@ -9,8 +9,8 @@ export const Form = styled.form`
     align-items: center;
 
     img {
-        height: 350px;
-        margin: 0px 0;
+        height: 260px;
+        margin: 10px 0;
     }
 `
 
@@ -27,7 +27,7 @@ export const Input = styled.input`
     border-radius: 4px;
     font-size: 18px;
     padding-left: 10px;
-    margin: 5px 0;
+    margin: 10px 0;
     width: 300px;
     color: #666;
 
