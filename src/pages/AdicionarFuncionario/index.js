@@ -4,7 +4,7 @@ import api from '../../services/api'
 import {toast} from 'react-toastify'
 import history from '../../services/history'
 
-import Logo from '../../assets/adcFunc.svg'
+import AdicionarFuncionarioImagem from '../../assets/adcFunc.svg'
 import { Form, WrapperItens, Input, Button, Select} from './styles'
 
 const AdicionarFuncionario = () => {
@@ -21,7 +21,7 @@ const AdicionarFuncionario = () => {
 
   return (
       <Form onSubmit={handleSubmit(onSubmit)}>
-          <img src={Logo} alt="Logo"/>
+          <img src={AdicionarFuncionarioImagem} alt="AdicionarFuncionarioImagem"/>
 
           <WrapperItens>
               <Input type="text" name="name" ref={register} placeholder="Nome completo"/>
