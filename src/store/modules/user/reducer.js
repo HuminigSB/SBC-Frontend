@@ -7,7 +7,7 @@ const reducer = (state = [], action) => {
         case actionTypes.AUTH_USER_SUCESS:
             return produce(state, draft => {
                 draft.push({
-                    auth: true
+                    auth: action.value
                 })
             })
         case actionTypes.UPDATE_USER_SUCCESS:
