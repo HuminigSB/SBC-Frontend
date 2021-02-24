@@ -7,12 +7,15 @@ import {ContainerTela,Tabela} from './styles'
 const ListarUsuarios = () => {    
     const [users,setUsers] = useState()
     const [load,setLoad] = useState(true) 
-    useEffect(async() => {
-        const {data} = await api.get('/user')
-        setUsers(data)
-        setLoad(false)
+    useEffect(() => {
+        async function load(){
+            const {data} = await api.get('/user')
+            setUsers(data)
+            setLoad(false)
+        }
+        load()
     },[]);
-
+    
     return(
         <ContainerTela>
             <img src={ListarUsuariosImagem} alt="ListarUsuariosImagem"/>
