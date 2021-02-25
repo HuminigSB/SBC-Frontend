@@ -9,8 +9,7 @@ export const ContainerTela = styled.div`
 
     img {
         height: 260px;
-        margin: 10px 0;
-        margin-bottom: 30px;
+        margin: 60px 0px 30px 0px;
     }
 `
 
@@ -32,4 +31,9 @@ export const Tabela = styled.table`
     }
 `
 
+export const ButtonDelete = styled.button`
+    background-color: Transparent;
+    border: none;
+    margin-left:18px;
+`
 
