@@ -2,12 +2,12 @@
 import React from 'react'
 import {toast} from 'react-toastify'
 import { useForm } from "react-hook-form"
-import * as Yup from 'yup';
+import {useDispatch} from 'react-redux'
+import * as Yup from 'yup'
 
 // Import de arquivos auxiliares
-import api from '../../services/api'
-import history from '../../services/history'
 import Logo from '../../assets/logo-white.png'
+import {signUpRequest} from '../../store/modules/auth/actions';
 
 // Import de estilo
 import { Form, WrapperItens, Input, Button, Select, LinkTo } from './styles'
@@ -23,17 +23,12 @@ const schema = Yup.object().shape({
 });
 
 const SignUp = () => {
+    const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
 
     const onSubmit = (data) => {
         schema.validate(data).then(function (response){
-            api.post('/user', data).then(function (response){
-                toast.success("Conta criada com sucesso!")
-                history.push('/')
-            }).catch(function(error){
-                console.log()
-                toast.error("ERRO: " + error.response.data.error)
-            })
+            dispatch(signUpRequest(data))
         }).catch(function(error){
             toast.error(error.message)
         })

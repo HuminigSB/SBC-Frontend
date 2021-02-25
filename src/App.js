@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import Routes from './router/routes'
 import GlobalStyle from './styles/global'
 import history from './services/history'
-import store from './store/index'
+import {store} from './store/index'
 
 function App() {
   return (
