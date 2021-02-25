@@ -1,10 +1,13 @@
 import React,{useEffect,useState} from 'react'
+import {toast} from 'react-toastify'
+import {FaTrash} from 'react-icons/fa'
+
 import api from '../../services/api'
 
 import ListarUsuariosImagem from '../../assets/listUsers.svg'
-import {ContainerTela,Tabela} from './styles'
+import {ContainerTela,Tabela,ButtonDelete} from './styles'
 
-const ListarUsuarios = () => {    
+const ListarUsuarios = () => {  
     const [users,setUsers] = useState()
     const [load,setLoad] = useState(true) 
     useEffect(() => {
@@ -16,6 +19,17 @@ const ListarUsuarios = () => {
         load()
     },[]);
     
+    const handleDelete = (data) => {
+        api.delete('/user',{data: {
+              id:data
+            }
+          }).then(function (response){
+            window.location.reload()
+            toast.success("Usuario apagado com sucesso!")
+        }).catch(function(error){
+            toast.error("Algo deu errado, tente novamente")
+        })
+    }
     return(
         <ContainerTela>
             <img src={ListarUsuariosImagem} alt="ListarUsuariosImagem"/>
@@ -29,6 +43,7 @@ const ListarUsuarios = () => {
                         <th>Email</th>
                         <th>Tipo</th>
                         <th>Usuario</th>
+                        <th>Apagar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +55,7 @@ const ListarUsuarios = () => {
                         <td >{user.email}</td>
                         <td >{user.profile}</td>
                         <td >{user.username}</td>
+                        <td ><ButtonDelete onClick={()=>{ handleDelete(user.id) }}><FaTrash color="#fff" size={17}/></ButtonDelete></td>
                         </tr> )}
                 </tbody>
             </Tabela>

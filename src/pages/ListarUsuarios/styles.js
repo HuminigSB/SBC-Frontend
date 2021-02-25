@@ -32,4 +32,9 @@ export const Tabela = styled.table`
     }
 `
 
+export const ButtonDelete = styled.button`
+    background-color: Transparent;
+    border: none;
+    margin-left:18px;
+`
 
