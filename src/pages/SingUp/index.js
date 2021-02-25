@@ -1,21 +1,41 @@
+// Import de bibliotecas
 import React from 'react'
 import {toast} from 'react-toastify'
-import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form"
+import * as Yup from 'yup';
+
+// Import de arquivos auxiliares
 import api from '../../services/api'
 import history from '../../services/history'
-
 import Logo from '../../assets/logo-white.png'
+
+// Import de estilo
 import { Form, WrapperItens, Input, Button, Select, LinkTo } from './styles'
+
+// Validação
+const schema = Yup.object().shape({
+    name: Yup.string().required("O nome de usuário é obrigatório."),
+    email: Yup.string().email("O e-mail precisa ser válido.").required("O e-mail é obrigatório."),
+    cpf: Yup.string().required("O cpf é obrigátorio."),
+    rg: Yup.string().required("O rg é obrigátorio."),
+    username: Yup.string().required("O usuário de acesso é obrigatório."),
+    password: Yup.string().required("A senha de acesso é obrigatória.").min(6)
+});
 
 const SignUp = () => {
     const { register, handleSubmit } = useForm();
 
     const onSubmit = (data) => {
-        api.post('/user', data).then(function (response){
-            toast.success("Conta criada com sucesso :D")
-            history.push('/')
+        schema.validate(data).then(function (response){
+            api.post('/user', data).then(function (response){
+                toast.success("Conta criada com sucesso!")
+                history.push('/')
+            }).catch(function(error){
+                console.log()
+                toast.error("ERRO: " + error.response.data.error)
+            })
         }).catch(function(error){
-            toast.error("Algo deu errado, tente novamente :/")
+            toast.error(error.message)
         })
     }
 
