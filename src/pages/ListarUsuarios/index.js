@@ -1,10 +1,13 @@
+// Import de bibliotecas
 import React,{useEffect,useState} from 'react'
 import {toast} from 'react-toastify'
 import {FaTrash} from 'react-icons/fa'
 
+// Import de arquivos auxiliares
 import api from '../../services/api'
-
 import ListarUsuariosImagem from '../../assets/listUsers.svg'
+
+// Import de estilo
 import {ContainerTela,Tabela,ButtonDelete} from './styles'
 
 const ListarUsuarios = () => {  

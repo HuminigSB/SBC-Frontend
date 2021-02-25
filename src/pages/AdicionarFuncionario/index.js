@@ -1,10 +1,14 @@
+// Import de bibliotecas
 import React from 'react'
 import { useForm } from "react-hook-form"
-import api from '../../services/api'
 import {toast} from 'react-toastify'
-import history from '../../services/history'
 
+// Import de arquivos auxiliares
+import api from '../../services/api'
+import history from '../../services/history'
 import AdicionarFuncionarioImagem from '../../assets/adcFunc.svg'
+
+// Import de estilo
 import { Form, WrapperItens, Input, Button, Select} from './styles'
 
 const AdicionarFuncionario = () => {
