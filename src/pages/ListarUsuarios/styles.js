@@ -9,8 +9,7 @@ export const ContainerTela = styled.div`
 
     img {
         height: 260px;
-        margin: 10px 0;
-        margin-bottom: 30px;
+        margin: 60px 0px 30px 0px;
     }
 `
 
