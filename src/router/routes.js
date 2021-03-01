@@ -5,6 +5,7 @@ import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SingUp'
 import AdicionarFuncionario from '../pages/AdicionarFuncionario'
 import ListarUsuarios from '../pages/ListarUsuarios'
+import EditarUsuario from '../pages/EditarUsuario'
 
 const Routes = () => {
     return (
@@ -13,6 +14,7 @@ const Routes = () => {
             <Route path="/signup" component={SignUp}/>
             <Route path="/adicionarFuncionario" component={AdicionarFuncionario}/>
             <Route path="/listarUsuarios" component={ListarUsuarios}/>
+            <Route path="/editarUsuario/:id" component={EditarUsuario}/>
         </Switch>
     )
 }
