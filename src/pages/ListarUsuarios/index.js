@@ -21,7 +21,6 @@ const ListarUsuarios = () => {
             const {data} = await api.get('/user')
             const userId = store.getState().auth?.user?.id
             const userPosition = data.findIndex(user => user.id === userId)
-            console.log(userId)
             data.splice(userPosition, 1);
             setUsers(data)
             setLoad(false)
@@ -29,20 +28,25 @@ const ListarUsuarios = () => {
         load()
     },[]);
     
-    const handleDelete = (data) => {
-        api.delete('/user',{data: {
-              id:data
-            }
-          }).then(function (response){
-            window.location.reload()
-            toast.success("Usuario apagado com sucesso!")
-        }).catch(function(error){
-            toast.error("Algo deu errado, tente novamente")
-        })
-    }
-
-    const handleEdit = (data) =>{
-        history.push(`/editarUsuario/${data}`)
+    const handleClick= (data,tipo) =>{
+        switch(tipo){
+            case "edit":
+                history.push(`/editarUsuario/${data}`)
+                break
+            case "delete":
+                api.delete('/user',{data: {
+                    id:data
+                }
+                }).then(function (response){
+                    window.location.reload()
+                    toast.success("Usuario apagado com sucesso!")
+                }).catch(function(error){
+                    toast.error("Algo deu errado, tente novamente")
+                })
+                break
+            default:
+                break
+        }
     }
 
     return(
@@ -71,8 +75,8 @@ const ListarUsuarios = () => {
                         <td >{user.email}</td>
                         <td >{user.profile}</td>
                         <td >{user.username}</td>
-                        <td ><ButtonTable onClick={()=>{ handleEdit(user.id) }}><FaEdit color="#fff" size={17}/></ButtonTable></td>
-                        <td ><ButtonTable onClick={()=>{ handleDelete(user.id) }}><FaTrash color="#fff" size={17}/></ButtonTable></td>
+                        <td ><ButtonTable name="edit" onClick={()=>{ handleClick(user.id,"edit") }}><FaEdit color="#fff" size={17}/></ButtonTable></td>
+                        <td ><ButtonTable name="delete" onClick={()=>{ handleClick(user.id,"delete") }}><FaTrash color="#fff" size={17}/></ButtonTable></td>
                         </tr> )}
                 </tbody>
             </Tabela>
