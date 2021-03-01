@@ -7,17 +7,22 @@ import {FaTrash,FaEdit} from 'react-icons/fa'
 import api from '../../services/api'
 import history from '../../services/history'
 import ListarUsuariosImagem from '../../assets/listUsers.svg'
+import {store} from '../../store/index'
 
 // Import de estilo
 import {ContainerTela,Tabela,ButtonTable} from './styles'
 
 const ListarUsuarios = () => {  
     const [users,setUsers] = useState()
-    const [load,setLoad] = useState(true) 
-    
+    const [load,setLoad] = useState(true)
+
     useEffect(() => {
         async function load(){
             const {data} = await api.get('/user')
+            const userId = store.getState().auth?.user?.id
+            const userPosition = data.findIndex(user => user.id === userId)
+            console.log(userId)
+            data.splice(userPosition, 1);
             setUsers(data)
             setLoad(false)
         }
