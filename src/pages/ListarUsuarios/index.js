@@ -1,38 +1,54 @@
 // Import de bibliotecas
 import React,{useEffect,useState} from 'react'
 import {toast} from 'react-toastify'
-import {FaTrash} from 'react-icons/fa'
+import {FaTrash,FaEdit} from 'react-icons/fa'
 
 // Import de arquivos auxiliares
 import api from '../../services/api'
+import history from '../../services/history'
 import ListarUsuariosImagem from '../../assets/listUsers.svg'
+import {store} from '../../store/index'
 
 // Import de estilo
-import {ContainerTela,Tabela,ButtonDelete} from './styles'
+import {ContainerTela,Tabela,ButtonTable} from './styles'
 
 const ListarUsuarios = () => {  
     const [users,setUsers] = useState()
-    const [load,setLoad] = useState(true) 
+    const [load,setLoad] = useState(true)
+
     useEffect(() => {
         async function load(){
             const {data} = await api.get('/user')
+            const userId = store.getState().auth?.user?.id
+            const userPosition = data.findIndex(user => user.id === userId)
+            data.splice(userPosition, 1);
             setUsers(data)
             setLoad(false)
         }
         load()
     },[]);
     
-    const handleDelete = (data) => {
-        api.delete('/user',{data: {
-              id:data
-            }
-          }).then(function (response){
-            window.location.reload()
-            toast.success("Usuario apagado com sucesso!")
-        }).catch(function(error){
-            toast.error("Algo deu errado, tente novamente")
-        })
+    const handleClick= (data,tipo) =>{
+        switch(tipo){
+            case "edit":
+                history.push(`/editarUsuario/${data}`)
+                break
+            case "delete":
+                api.delete('/user',{data: {
+                    id:data
+                }
+                }).then(function (response){
+                    window.location.reload()
+                    toast.success("Usuario apagado com sucesso!")
+                }).catch(function(error){
+                    toast.error("Algo deu errado, tente novamente")
+                })
+                break
+            default:
+                break
+        }
     }
+
     return(
         <ContainerTela>
             <img src={ListarUsuariosImagem} alt="ListarUsuariosImagem"/>
@@ -46,6 +62,7 @@ const ListarUsuarios = () => {
                         <th>Email</th>
                         <th>Tipo</th>
                         <th>Usuario</th>
+                        <th>editar</th>
                         <th>Apagar</th>
                     </tr>
                 </thead>
@@ -58,7 +75,8 @@ const ListarUsuarios = () => {
                         <td >{user.email}</td>
                         <td >{user.profile}</td>
                         <td >{user.username}</td>
-                        <td ><ButtonDelete onClick={()=>{ handleDelete(user.id) }}><FaTrash color="#fff" size={17}/></ButtonDelete></td>
+                        <td ><ButtonTable name="edit" onClick={()=>{ handleClick(user.id,"edit") }}><FaEdit color="#fff" size={17}/></ButtonTable></td>
+                        <td ><ButtonTable name="delete" onClick={()=>{ handleClick(user.id,"delete") }}><FaTrash color="#fff" size={17}/></ButtonTable></td>
                         </tr> )}
                 </tbody>
             </Tabela>

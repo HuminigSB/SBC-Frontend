@@ -31,7 +31,7 @@ export const Tabela = styled.table`
     }
 `
 
-export const ButtonDelete = styled.button`
+export const ButtonTable = styled.button`
     background-color: Transparent;
     border: none;
     margin-left:18px;
