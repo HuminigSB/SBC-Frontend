@@ -11,7 +11,7 @@ import {store} from '../../store/index'
 import {signOut} from '../../store/modules/auth/actions'
 
 // Import de estilo
-import { Form, WrapperItens, Input, Button} from './styles'
+import { Form, WrapperItens, Input, Button, WrapperInput} from './styles'
 
 const EditarUsuario = () => {
     const dispatch = useDispatch();
@@ -89,11 +89,29 @@ const EditarUsuario = () => {
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <img src={EditarUsuarioImagem} alt="Logo"/>
                 <WrapperItens>
-                    <Input type="text" name="name" ref={register} value={dados.name} onChange={(e)=>{ onInputchange(e)}}/>
-                    <Input type="text" name="cpf" ref={register} value={dados.cpf} onChange={(e)=>{ onInputchange(e)}}/>
-                    <Input type="text" name="rg" ref={register} value={dados.rg} onChange={(e)=>{ onInputchange(e)}}/>
-                    <Input type="text" name="email" ref={register} value={dados.email} onChange={(e)=>{ onInputchange(e)}}/>
-                    <Input type="text" name="number" ref={register} value={dados.number} onChange={(e)=>{ onInputchange(e)}}/>
+                    <WrapperInput>
+                        <label htmlFor="number">Nome:</label>
+                        <Input type="text" name="name" ref={register} value={dados.name} onChange={(e)=>{ onInputchange(e)}}/>
+                    </WrapperInput>
+
+                    <wrapperInpu>
+                        <label htmlFor="number">Cpf:</label>
+                        <Input type="text" name="cpf" ref={register} value={dados.cpf} onChange={(e)=>{ onInputchange(e)}}/>
+                    </wrapperInpu>
+
+                    <wrapperInpu>
+                        <label htmlFor="number">Rg:</label>
+                        <Input type="text" name="rg" ref={register} value={dados.rg} onChange={(e)=>{ onInputchange(e)}}/>
+                    </wrapperInpu>
+
+                    <wrapperInpu>
+                        <label htmlFor="number">E-mail:</label>
+                        <Input type="text" name="email" ref={register} value={dados.email} onChange={(e)=>{ onInputchange(e)}}/>
+                    </wrapperInpu>
+                    <wrapperInpu>
+                        <label htmlFor="number">Número de telefone:</label>
+                        <Input type="text" name="number" ref={register} value={dados.number} placeholder="Número de telefone" onChange={(e)=>{ onInputchange(e)}}/> 
+                    </wrapperInpu>
                 </WrapperItens>
                 <Button type="submit">Salvar Alterações</Button>
                 {userAtual && <Button type="button" onClick={handleDelete} >Apagar Conta</Button>}

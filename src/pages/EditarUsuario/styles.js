@@ -75,3 +75,13 @@ export const Button = styled.button`
         color: #fff;
     }
 `
+
+export const WrapperInput = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    label{
+        color: #ccc;
+        font-size: 13px;
+    }
+`
