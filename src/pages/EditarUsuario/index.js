@@ -91,27 +91,28 @@ const EditarUsuario = () => {
                 <WrapperItens>
                     <WrapperInput>
                         <label htmlFor="number">Nome:</label>
-                        <Input type="text" name="name" ref={register} value={dados.name} onChange={(e)=>{ onInputchange(e)}}/>
+                        <Input type="text" name="name" ref={register} value={dados.name} placeholder="Nome" onChange={(e)=>{ onInputchange(e)}}/>
                     </WrapperInput>
 
-                    <wrapperInpu>
+                    <WrapperInput>
                         <label htmlFor="number">Cpf:</label>
-                        <Input type="text" name="cpf" ref={register} value={dados.cpf} onChange={(e)=>{ onInputchange(e)}}/>
-                    </wrapperInpu>
+                        <Input type="text" name="cpf" ref={register} value={dados.cpf} placeholder="Cpf" onChange={(e)=>{ onInputchange(e)}}/>
+                    </WrapperInput>
 
-                    <wrapperInpu>
+                    <WrapperInput>
                         <label htmlFor="number">Rg:</label>
-                        <Input type="text" name="rg" ref={register} value={dados.rg} onChange={(e)=>{ onInputchange(e)}}/>
-                    </wrapperInpu>
+                        <Input type="text" name="rg" ref={register} value={dados.rg} placeholder="Rg" onChange={(e)=>{ onInputchange(e)}}/>
+                    </WrapperInput>
 
-                    <wrapperInpu>
+                    <WrapperInput>
                         <label htmlFor="number">E-mail:</label>
-                        <Input type="text" name="email" ref={register} value={dados.email} onChange={(e)=>{ onInputchange(e)}}/>
-                    </wrapperInpu>
-                    <wrapperInpu>
+                        <Input type="text" name="email" ref={register} value={dados.email} placeholder="E-mail" onChange={(e)=>{ onInputchange(e)}}/>
+                    </WrapperInput>
+
+                    <WrapperInput>
                         <label htmlFor="number">Número de telefone:</label>
                         <Input type="text" name="number" ref={register} value={dados.number} placeholder="Número de telefone" onChange={(e)=>{ onInputchange(e)}}/> 
-                    </wrapperInpu>
+                    </WrapperInput>
                 </WrapperItens>
                 <Button type="submit">Salvar Alterações</Button>
                 {userAtual && <Button type="button" onClick={handleDelete} >Apagar Conta</Button>}
