@@ -1,22 +1,32 @@
 import React from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Route, Redirect} from 'react-router-dom'
 
-import SignIn from '../pages/SignIn'
-import SignUp from '../pages/SingUp'
-import AdicionarFuncionario from '../pages/AdicionarFuncionario'
-import ListarUsuarios from '../pages/ListarUsuarios'
-import EditarUsuario from '../pages/EditarUsuario'
+import {store} from '../store'
 
-const Routes = () => {
-    return (
-        <Switch>
-            <Route exact path="/" component={SignIn}/>
-            <Route path="/signup" component={SignUp}/>
-            <Route path="/adicionarFuncionario" component={AdicionarFuncionario}/>
-            <Route path="/listarUsuarios" component={ListarUsuarios}/>
-            <Route path="/editarUsuario/:id" component={EditarUsuario}/>
-        </Switch>
-    )
+const RouteWrapper = ({
+    component: Component,
+    isPrivate,
+    isAdmin,
+    ...rest
+}) => {
+    const signed = store.getState().auth.signed
+    let profile
+    
+    if(signed){
+        profile = store.getState().auth.user.profile
+    }
+
+    if(!signed && isPrivate)
+        return <Redirect to="/"/>
+
+    if(signed && !isPrivate)
+        return <Redirect to="/dashboard"/>
+
+    if(isAdmin && !(profile === 'admin')){
+        return <Redirect to="/dashboard"/>
+    }
+    
+    return <Route {...rest} render={props => <Component {...props}/>} />
 }
 
-export default Routes
+export default RouteWrapper
