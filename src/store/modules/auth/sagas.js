@@ -13,8 +13,8 @@ export function* signIn({payload}){
         api.defaults.headers['Authorization'] = `Bearer ${token}`
         yield put(signInSucess(token, user))
         history.push('/dashboard')
-    }catch(err){
-        toast.error('Falha na autenticação, verifique seus dados!')
+    }catch(error){
+        toast.error(error.response.data.error)
         yield put(signFailure())
     }
 }
@@ -24,8 +24,8 @@ export function* signUp({payload}){
         yield call(api.post, '/user', payload)
         toast.success("Conta criada com sucesso!")
         history.push('/')
-    }catch(err){
-        toast.error('Falha no cadastro, verifique seus dados!')
+    }catch(error){
+        toast.error(error.response.data.error)
         yield put(signFailure())
     }
 }
