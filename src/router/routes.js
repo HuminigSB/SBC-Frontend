@@ -2,6 +2,8 @@ import React from 'react'
 import {Route, Redirect} from 'react-router-dom'
 
 import {store} from '../store'
+import AuthLayout from '../layout/auth'
+import DefaultLayout from '../layout/default'
 
 const RouteWrapper = ({
     component: Component,
@@ -25,8 +27,14 @@ const RouteWrapper = ({
     if(isAdmin && !(profile === 'admin')){
         return <Redirect to="/dashboard"/>
     }
-    
-    return <Route {...rest} render={props => <Component {...props}/>} />
+
+    const Layout = signed ? AuthLayout : DefaultLayout
+
+    return <Route {...rest} render={props => (
+        <Layout>
+            <Component {...props}/>
+        </Layout> 
+    )} />
 }
 
 export default RouteWrapper
