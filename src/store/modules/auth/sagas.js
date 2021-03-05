@@ -12,7 +12,7 @@ export function* signIn({payload}){
         const {user, token} = response.data
         api.defaults.headers['Authorization'] = `Bearer ${token}`
         yield put(signInSucess(token, user))
-        history.push('/listarUsuarios')
+        history.push('/dashboard')
     }catch(err){
         toast.error('Falha na autenticação, verifique seus dados!')
         yield put(signFailure())
