@@ -39,9 +39,9 @@ const ListarUsuarios = () => {
                 }
                 }).then(function (response){
                     window.location.reload()
-                    toast.success("Usuario apagado com sucesso!")
+                    toast.success(response.data.success)
                 }).catch(function(error){
-                    toast.error("Algo deu errado, tente novamente")
+                    toast.error(error.response.data.error)
                 })
                 break
             default:
