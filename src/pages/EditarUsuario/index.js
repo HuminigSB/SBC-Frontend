@@ -3,6 +3,7 @@ import React,{useEffect,useState} from 'react'
 import { useForm } from "react-hook-form"
 import {toast} from 'react-toastify'
 import {useDispatch} from 'react-redux'
+import * as Yup from 'yup'
 
 // Import de arquivos auxiliares
 import EditarUsuarioImagem from '../../assets/editUser.svg'
@@ -12,6 +13,13 @@ import {signOut} from '../../store/modules/auth/actions'
 
 // Import de estilo
 import { Form, WrapperItens, Input, Button, WrapperInput} from './styles'
+
+const schema = Yup.object().shape({
+    name: Yup.string().required("O nome do usuário é obrigatório."),
+    email: Yup.string().email("O e-mail precisa ser válido.").required("O e-mail é obrigatório."),
+    cpf: Yup.string().required("O cpf é obrigátorio."),
+    rg: Yup.string().required("O rg é obrigátorio."),
+});
 
 const EditarUsuario = () => {
     const dispatch = useDispatch();
@@ -43,11 +51,16 @@ const EditarUsuario = () => {
     },[id,userId]);
 
     const onSubmit = (data) => {
-        api.put(`/user/${id}`,data).then(function (response){
-            toast.success("Usuario editado com sucesso!")
+        schema.validate(data).then(function (response){
+            api.put(`/user/${id}`,data).then(function (response){
+                toast.success(response.data.success)
+            }).catch(function(error){
+                toast.error(error.response.data.error)
+            })
         }).catch(function(error){
-            toast.error("Algo deu errado, tente novamente")
+            toast.error(error.message)
         })
+        
     }
 
     const onInputchange = (event) => {
