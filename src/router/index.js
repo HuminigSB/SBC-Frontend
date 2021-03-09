@@ -15,6 +15,9 @@ import ListarUsuarios from '../pages/ListarUsuarios'
 import AdicionarFuncionario from '../pages/AdicionarFuncionario'
 import EditarUsuario from '../pages/EditarUsuario'
 
+// Não encontrado
+import NotFound from '../pages/DefaultPage'
+
 const Routes = () => (
     <Switch>
         <Route exact path="/" component={SignIn}/>
@@ -25,6 +28,8 @@ const Routes = () => (
 
         <Route path="/adicionarFuncionario" component={AdicionarFuncionario} isPrivate isAdmin/>
         <Route path="/listarUsuarios" component={ListarUsuarios} isPrivate isAdmin/>
+
+        <Route path="/" component={NotFound}/>
     </Switch>
 )
 
