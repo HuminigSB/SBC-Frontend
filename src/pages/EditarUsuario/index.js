@@ -8,6 +8,7 @@ import * as Yup from 'yup'
 // Import de arquivos auxiliares
 import EditarUsuarioImagem from '../../assets/editUser.svg'
 import api from '../../services/api'
+import history from '../../services/history'
 import {store} from '../../store/index'
 import {signOut} from '../../store/modules/auth/actions'
 
@@ -34,8 +35,12 @@ const EditarUsuario = () => {
 
     useEffect(() => {
         async function load(){
+            const admin = 'admin'===store.getState().auth.user.profile
+            const atual = store.getState().auth.user.id===id
+            if(!atual && !admin){
+                history.push(`/dashboard`)
+            }
             setUserId(store.getState().auth?.user?.id)
-            const atual = userId===id
             const {data} = await api.get(`/login/${id}`)
             setDados({
                 name: data.name,
@@ -90,10 +95,10 @@ const EditarUsuario = () => {
               id:id
             }
         }).then(function (response){
-            toast.success("Usuario apagado com sucesso!")
+            toast.success(response.data.success)
             dispatch(signOut())
         }).catch(function(error){
-            toast.error("Algo deu errado, tente novamente")
+            toast.error(error.response.data.error)
         })
     }
 
@@ -128,6 +133,7 @@ const EditarUsuario = () => {
                     </WrapperInput>
                 </WrapperItens>
                 <Button type="submit">Salvar Alterações</Button>
+                {}
                 {userAtual && <Button type="button" onClick={handleDelete} >Apagar Conta</Button>}
             </Form>
             )
