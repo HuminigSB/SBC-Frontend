@@ -15,6 +15,7 @@ import ListarUsuarios from '../pages/ListarUsuarios'
 import AdicionarFuncionario from '../pages/AdicionarFuncionario'
 import EditarUsuario from '../pages/EditarUsuario'
 import AdicionarSala from '../pages/AdicionarSala'
+import ListarSalas from '../pages/ListarSalas'
 
 // Não encontrado
 import NotFound from '../pages/DefaultPage'
@@ -30,6 +31,7 @@ const Routes = () => (
         <Route path="/adicionarFuncionario" component={AdicionarFuncionario} isPrivate isAdmin/>
         <Route path="/listarUsuarios" component={ListarUsuarios} isPrivate isAdmin/>
         <Route path="/adicionarSala" component={AdicionarSala} isPrivate isAdmin/>
+        <Route path="/listarSalas" component={ListarSalas} isPrivate isAdmin/>
 
         <Route path="/" component={NotFound}/>
     </Switch>
