@@ -7,6 +7,7 @@ import ListarIcon from '../../assets/listUsers.svg'
 import EditarIcon from '../../assets/editUser.svg'
 import AdicionarSala from '../../assets/adcSala.svg'
 import ListarSalas from '../../assets/listSalas.svg'
+import EditarSala from '../../assets/editSala.svg'
 
 import { Container, Card, Row } from './styles'
 
@@ -62,6 +63,13 @@ const Menu = () => {
                     <Card onClick={listarSalas}>
                         <strong>Listar Salas</strong>
                         <img src={ListarSalas} alt="Listar Salas"/>
+                    </Card>
+                )}
+
+                {admin && (
+                    <Card onClick={listarSalas}>
+                        <strong>Editar Sala</strong>
+                        <img src={EditarSala} alt="Editar Sala"/>
                     </Card>
                 )}
            </Row>

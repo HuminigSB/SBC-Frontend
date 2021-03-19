@@ -27,7 +27,7 @@ const ListarSalas = () => {
     const handleClick= (data,tipo) =>{
         switch(tipo){
             case "edit":
-                history.push(`/editarUsuario/${data}`)
+                history.push(`/editarSala/${data}`)
                 break
             case "delete":
                 api.delete('/sala',{data: {
