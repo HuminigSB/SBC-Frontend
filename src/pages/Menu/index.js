@@ -5,6 +5,10 @@ import history from '../../services/history'
 import AdicionarIcon from '../../assets/adcFunc.svg'
 import ListarIcon from '../../assets/listUsers.svg'
 import EditarIcon from '../../assets/editUser.svg'
+import AdicionarSala from '../../assets/adcSala.svg'
+import ListarSalas from '../../assets/listSalas.svg'
+import EditarSala from '../../assets/editSala.svg'
+
 import { Container, Card, Row } from './styles'
 
 const Menu = () => {
@@ -19,6 +23,8 @@ const Menu = () => {
     const listUser = () => history.push('/listarUsuarios') 
     const adicionarUser = () => history.push('/adicionarFuncionario') 
     const editarUser = () => history.push(`/editarUsuario/${id}`) 
+    const adicionarSala = () => history.push('/adicionarSala') 
+    const listarSalas = () => history.push('/listarSalas') 
 
     return(
         <Container>
@@ -41,6 +47,29 @@ const Menu = () => {
                     <Card onClick={editarUser}>
                         <strong>Editar Funcionario</strong>
                         <img src={EditarIcon} alt="Editar funcionario"/>
+                    </Card>
+                )}
+           </Row>
+
+           <Row>
+                {admin && (
+                    <Card onClick={adicionarSala}>
+                        <strong>Adicionar Sala</strong>
+                        <img src={AdicionarSala} alt="Adicionar Sala"/>
+                    </Card>
+                )}
+
+                {admin && (
+                    <Card onClick={listarSalas}>
+                        <strong>Listar Salas</strong>
+                        <img src={ListarSalas} alt="Listar Salas"/>
+                    </Card>
+                )}
+
+                {admin && (
+                    <Card onClick={listarSalas}>
+                        <strong>Editar Sala</strong>
+                        <img src={EditarSala} alt="Editar Sala"/>
                     </Card>
                 )}
            </Row>

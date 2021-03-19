@@ -1,8 +1,11 @@
+// Import de arquivos
 import React from 'react'
 import { Link } from 'react-router-dom'
  
+// Import de arquivos auxiliares
 import NotFound from "../../assets/not-found.svg"
 
+// Import de estilos
 import { Container } from './styles'
 
 const DefaultPage = () => {
