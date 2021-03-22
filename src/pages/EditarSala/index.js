@@ -73,7 +73,7 @@ const EditarSala = () => {
                 break;
             case "3":
                 api.put(`/poltrona/${values.numero}`, {
-                    type: "double", 
+                    type: "doble", 
                     value: "20.00",
                     active: values.ativa === "1" ? true : false
                 }).then(function (response){
