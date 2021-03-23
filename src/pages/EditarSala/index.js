@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form"
 import {toast} from 'react-toastify'
+import * as Yup from 'yup'
 
 // Import de arquivos auxiliares
 import api from '../../services/api'
@@ -12,6 +13,11 @@ import WheelchairIcon from '../../assets/wheel-c.png'
 
 // Impot Estilos
 import { Container, Table, EditScreen, WrapperItens, Icon } from './styles'
+
+// Validação
+const schema = Yup.object().shape({
+    numero: Yup.string().matches(/^[0-9]*$/, "Apenas números na poltrona")
+});
 
 const EditarSala = () => {
     const { register, handleSubmit } = useForm();
@@ -46,6 +52,11 @@ const EditarSala = () => {
     },[id]);
 
     const onSubmit = async (values) => {
+        schema.validate(values)
+        .catch(function(error){
+            toast.error(error.message)
+        })
+            
         switch (values.tipo) {
             case "1":
                 api.put(`/poltrona/${values.numero}`, {
