@@ -8,6 +8,7 @@ import EditarIcon from '../../assets/editUser.svg'
 import AdicionarSala from '../../assets/adcSala.svg'
 import ListarSalas from '../../assets/listSalas.svg'
 import EditarSala from '../../assets/editSala.svg'
+import AdicionarCombo from '../../assets/addCombo.svg'
 
 import { Container, Card, Row } from './styles'
 
@@ -25,6 +26,7 @@ const Menu = () => {
     const editarUser = () => history.push(`/editarUsuario/${id}`) 
     const adicionarSala = () => history.push('/adicionarSala') 
     const listarSalas = () => history.push('/listarSalas') 
+    const adicionarCombo = () => history.push('/adicionarCombo') 
 
     return(
         <Container>
@@ -72,6 +74,13 @@ const Menu = () => {
                         <img src={EditarSala} alt="Editar Sala"/>
                     </Card>
                 )}
+           </Row>
+
+           <Row>
+                <Card onClick={adicionarCombo}>
+                    <strong>Adicionar Combo</strong>
+                    <img src={AdicionarCombo} alt="Adicionar Combo"/>
+                </Card>
            </Row>
         </Container>
     )
