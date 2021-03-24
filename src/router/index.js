@@ -10,6 +10,7 @@ import SignUp from '../pages/SingUp'
 // Com autenticação
 import Menu from '../pages/Menu'
 import ListarUsuarios from '../pages/ListarUsuarios'
+import AdicionarCombo from '../pages/AdicionarCombo'
 
 // Somente administrador
 import AdicionarFuncionario from '../pages/AdicionarFuncionario'
@@ -28,6 +29,7 @@ const Routes = () => (
 
         <Route path="/dashboard" component={Menu} isPrivate />
         <Route path="/editarUsuario/:id" component={EditarUsuario} isPrivate />
+        <Route path="/adicionarCombo" component={AdicionarCombo} isPrivate />
 
         <Route path="/adicionarFuncionario" component={AdicionarFuncionario} isPrivate isAdmin/>
         <Route path="/listarUsuarios" component={ListarUsuarios} isPrivate isAdmin/>
