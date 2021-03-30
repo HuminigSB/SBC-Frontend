@@ -9,6 +9,7 @@ import AdicionarSala from '../../assets/adcSala.svg'
 import ListarSalas from '../../assets/listSalas.svg'
 import EditarSala from '../../assets/editSala.svg'
 import AdicionarCombo from '../../assets/addCombo.svg'
+import AdicionarSessao from '../../assets/adcSessao.svg'
 
 import { Container, Card, Row } from './styles'
 
@@ -27,6 +28,7 @@ const Menu = () => {
     const adicionarSala = () => history.push('/adicionarSala') 
     const listarSalas = () => history.push('/listarSalas') 
     const adicionarCombo = () => history.push('/adicionarCombo') 
+    const adicionarSessao = () => history.push('/adicionarSessao') 
 
     return(
         <Container>
@@ -81,7 +83,15 @@ const Menu = () => {
                     <strong>Adicionar Combo</strong>
                     <img src={AdicionarCombo} alt="Adicionar Combo"/>
                 </Card>
+
+                {admin &&(
+                <Card onClick={adicionarSessao}>
+                    <strong>Adicionar Sessão</strong>
+                    <img src={AdicionarSessao} alt="Adicionar Sessao"/>
+                </Card>
+                )}
            </Row>
+
         </Container>
     )
 }
