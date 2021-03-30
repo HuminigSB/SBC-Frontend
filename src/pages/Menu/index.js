@@ -4,7 +4,6 @@ import {store} from '../../store'
 import history from '../../services/history'
 import AdicionarIcon from '../../assets/adcFunc.svg'
 import ListarIcon from '../../assets/listUsers.svg'
-import EditarIcon from '../../assets/editUser.svg'
 import AdicionarSala from '../../assets/adcSala.svg'
 import ListarSalas from '../../assets/listSalas.svg'
 import EditarSala from '../../assets/editSala.svg'
@@ -14,17 +13,16 @@ import AdicionarSessao from '../../assets/adcSessao.svg'
 import { Container, Card, Row } from './styles'
 
 const Menu = () => {
-    const [id, setId] = useState('')
-    const [admin, setAdmin] = useState('')
+    const [isFunc, setIsFunc] = useState('')
+    const [isAdmin, setIsAdmin] = useState('')
 
     useEffect(() => {
-        setId(store.getState().auth.user.id)
-        setAdmin(store.getState().auth.user.profile)
+        setIsFunc(!!(store.getState().auth.user.profile === 'funcionario'))
+        setIsAdmin(!!(store.getState().auth.user.profile === 'admin'))
     }, [])
 
     const listUser = () => history.push('/listarUsuarios') 
     const adicionarUser = () => history.push('/adicionarFuncionario') 
-    const editarUser = () => history.push(`/editarUsuario/${id}`) 
     const adicionarSala = () => history.push('/adicionarSala') 
     const listarSalas = () => history.push('/listarSalas') 
     const adicionarCombo = () => history.push('/adicionarCombo') 
@@ -33,44 +31,35 @@ const Menu = () => {
     return(
         <Container>
            <Row>
-                {admin && (
-                        <Card onClick={listUser}>
-                            <strong>Listar Usuários</strong>
-                            <img src={ListarIcon} alt="Listar usuário"/>
-                        </Card>
-                )}
+               <Card onClick={adicionarCombo}>
+                    <strong>Adicionar Combo</strong>
+                    <img src={AdicionarCombo} alt="Adicionar Combo"/>
+                </Card>
 
-                {admin && (
-                    <Card onClick={adicionarUser}>
-                        <strong>Adicionar Funcionario</strong>
-                        <img src={AdicionarIcon} alt="Adicionar funcionario"/>
-                    </Card>
-                )}
-
-                {admin && (
-                    <Card onClick={editarUser}>
-                        <strong>Editar Funcionario</strong>
-                        <img src={EditarIcon} alt="Editar funcionario"/>
+                {(isAdmin || isFunc) &&(
+                    <Card onClick={adicionarSessao}>
+                        <strong>Adicionar Sessão</strong>
+                        <img src={AdicionarSessao} alt="Adicionar Sessao"/>
                     </Card>
                 )}
            </Row>
 
            <Row>
-                {admin && (
+                {(isAdmin || isFunc) && (
                     <Card onClick={adicionarSala}>
                         <strong>Adicionar Sala</strong>
                         <img src={AdicionarSala} alt="Adicionar Sala"/>
                     </Card>
                 )}
 
-                {admin && (
+                {(isAdmin || isFunc) && (
                     <Card onClick={listarSalas}>
                         <strong>Listar Salas</strong>
                         <img src={ListarSalas} alt="Listar Salas"/>
                     </Card>
                 )}
 
-                {admin && (
+                {(isAdmin || isFunc) && (
                     <Card onClick={listarSalas}>
                         <strong>Editar Sala</strong>
                         <img src={EditarSala} alt="Editar Sala"/>
@@ -78,17 +67,19 @@ const Menu = () => {
                 )}
            </Row>
 
-           <Row>
-                <Card onClick={adicionarCombo}>
-                    <strong>Adicionar Combo</strong>
-                    <img src={AdicionarCombo} alt="Adicionar Combo"/>
-                </Card>
+           <Row>              
+                {isAdmin && (
+                    <Card onClick={listUser}>
+                        <strong>Listar Usuários</strong>
+                        <img src={ListarIcon} alt="Listar usuário"/>
+                    </Card>
+                )}
 
-                {admin &&(
-                <Card onClick={adicionarSessao}>
-                    <strong>Adicionar Sessão</strong>
-                    <img src={AdicionarSessao} alt="Adicionar Sessao"/>
-                </Card>
+                {isAdmin && (
+                    <Card onClick={adicionarUser}>
+                        <strong>Adicionar Usuário</strong>
+                        <img src={AdicionarIcon} alt="Adicionar funcionario"/>
+                    </Card>
                 )}
            </Row>
 
