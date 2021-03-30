@@ -9,6 +9,7 @@ const RouteWrapper = ({
     component: Component,
     isPrivate,
     isAdmin,
+    isFunc,
     ...rest
 }) => {
     const signed = store.getState().auth.signed
@@ -25,6 +26,10 @@ const RouteWrapper = ({
         return <Redirect to="/dashboard"/>
 
     if(isAdmin && !(profile === 'admin')){
+        return <Redirect to="/dashboard"/>
+    }
+
+    if(isFunc && !((profile === 'admin') || (profile === 'funcionario'))){
         return <Redirect to="/dashboard"/>
     }
 
