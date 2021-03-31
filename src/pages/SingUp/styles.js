@@ -10,7 +10,7 @@ export const Form = styled.form`
 
     img {
         height: 350px;
-        margin: 100px 0;
+        margin: 50px 0;
     }
 `
 
@@ -18,6 +18,10 @@ export const WrapperItens = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    a{
+        margin: 10px 0px;
+    }
 `
 
 export const Input = styled.input`
