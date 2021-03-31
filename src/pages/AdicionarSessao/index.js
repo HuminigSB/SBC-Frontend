@@ -30,7 +30,8 @@ const AdicionarSessao = () => {
         description: data.description,
         data: data.data,
         inicio: new Date(data.data+" "+data.inicio),
-        duracao: data.duracao}
+        duracao: data.duracao,
+        linkImg: data.linkImg}
         schema.validate(treatedData).then(function (response){
             api.post('/sessao', treatedData).then(function (response){
                 toast.success("Sessão criada com sucesso!")
