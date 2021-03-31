@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 // Import de bibliotecas
 import React,{useEffect,useState} from 'react'
 import dateFormat from 'dateformat'
@@ -21,7 +22,7 @@ const ListarSessoes = () => {
         async function load(){
             const {data} = await api.get('/sessao/-1')
             const sessoesBusca = []
-            data.map(sessao =>{
+            data.map(sessao => {
                 if(!sessao.linkImg){
                     sessao.linkImg = noImage
                 }
@@ -41,12 +42,11 @@ const ListarSessoes = () => {
     
     const handleClick= (data,tipo) =>{
         const type = +window.location.href.split("http://localhost:3000/listarSessoes/").pop()
-        console.log(type)
         if(type === 0 && ('admin'===store.getState().auth.user.profile || 'funcionario'===store.getState().auth.user.profile)){
             history.push(`/editarSessao/${data}`)
         }
         if(type === 1){
-            console.log("chama reserva com id sessao:"+data)
+            history.push(`/reservar/${data}`)
         }
     }
 
@@ -54,7 +54,7 @@ const ListarSessoes = () => {
         <ContainerTela>
             {!load && sessoes.map(sessao => 
                 <Button key={sessao.id} onClick={()=>{ handleClick(sessao.id) }}>
-                    <img src={sessao.linkImg}/>
+                    <img src={sessao.linkImg} alt="cartaz do filme"/>
                     <h1>{sessao.title_movie}</h1>
                     <b>{sessao.data}</b>
                     <small>{dateFormat(sessao.inicio, 'HH:MM')}</small>        

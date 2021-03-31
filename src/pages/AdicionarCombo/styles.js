@@ -7,7 +7,7 @@ export const Container = styled.div`
     justify-content: center;
     height: 100vh;
     min-width: 800px;
-    background: #aaaaaa;
+    background: #171717;
 `
 
 export const Row = styled.div`
@@ -26,7 +26,7 @@ export const Button = styled.button`
     width: 350px;
     background: #333333;
     border: 5px solid #333333;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: all 0.6s;
     margin: 0 80px;
 
