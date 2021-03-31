@@ -9,6 +9,7 @@ import ListarSalas from '../../assets/listSalas.svg'
 import EditarSala from '../../assets/editSala.svg'
 import AdicionarCombo from '../../assets/addCombo.svg'
 import AdicionarSessao from '../../assets/adcSessao.svg'
+import EditarSessao from '../../assets/editSessao.svg'
 
 import { Container, Card, Row } from './styles'
 
@@ -27,11 +28,13 @@ const Menu = () => {
     const listarSalas = () => history.push('/listarSalas') 
     const adicionarCombo = () => history.push('/adicionarCombo') 
     const adicionarSessao = () => history.push('/adicionarSessao') 
+    const listarSessoesEditar = () => history.push('/listarSessoes/0')
+    const listarSessoesReservar = () => history.push('/listarSessoes/1')
 
     return(
         <Container>
            <Row>
-               <Card onClick={adicionarCombo}>
+                <Card onClick={adicionarCombo}>
                     <strong>Adicionar Combo</strong>
                     <img src={AdicionarCombo} alt="Adicionar Combo"/>
                 </Card>
@@ -40,6 +43,13 @@ const Menu = () => {
                     <Card onClick={adicionarSessao}>
                         <strong>Adicionar Sessão</strong>
                         <img src={AdicionarSessao} alt="Adicionar Sessao"/>
+                    </Card>
+                )}
+
+                {(isAdmin || isFunc) && (
+                    <Card onClick={listarSessoesEditar}>
+                        <strong>Editar Sessão</strong>
+                        <img src={EditarSessao} alt="Editar Sessao"/>
                     </Card>
                 )}
            </Row>

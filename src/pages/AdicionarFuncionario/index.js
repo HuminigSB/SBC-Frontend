@@ -13,12 +13,13 @@ import AdicionarFuncionarioImagem from '../../assets/adcFunc.svg'
 import { Form, WrapperItens, Input, Button, Select} from './styles'
 
 const schema = Yup.object().shape({
-    name: Yup.string().required("O nome do usuário é obrigatório."),
+    name: Yup.string().matches(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/, "Apenas letras no nome").required("O nome do usuário é obrigatório."),
     email: Yup.string().email("O e-mail precisa ser válido.").required("O e-mail é obrigatório."),
     cpf: Yup.string().required("O cpf é obrigátorio."),
     rg: Yup.string().required("O rg é obrigátorio."),
     username: Yup.string().required("O usuário de acesso é obrigatório."),
-    password: Yup.string().required("A senha de acesso é obrigatória.").min(6)
+    password: Yup.string().required("A senha de acesso é obrigatória.").min(6),
+    number: Yup.string().matches(/^[0-9]*$/, "Apenas números no número")
 });
 
 const AdicionarFuncionario = () => {

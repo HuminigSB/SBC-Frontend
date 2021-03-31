@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Form = styled.form`
-    height: 100%;
+    height: 100vh;
     background: #171717;
     display: flex;
     flex-direction: column;
@@ -55,6 +55,7 @@ export const TextArea = styled.textarea`
         box-shadow: 0px 0px 5px #eb0613;
     }
 `
+
 export const Button = styled.button`
     background: transparent;
     height: 50px;

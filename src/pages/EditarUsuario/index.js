@@ -16,10 +16,11 @@ import {signOut} from '../../store/modules/auth/actions'
 import { Form, WrapperItens, Input, Button, WrapperInput} from './styles'
 
 const schema = Yup.object().shape({
-    name: Yup.string().required("O nome do usuário é obrigatório."),
+    name: Yup.string().matches(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/, "Apenas letras no nome").required("O nome do usuário é obrigatório."),
     email: Yup.string().email("O e-mail precisa ser válido.").required("O e-mail é obrigatório."),
     cpf: Yup.string().required("O cpf é obrigátorio."),
     rg: Yup.string().required("O rg é obrigátorio."),
+    number: Yup.string().matches(/^[0-9]*$/, "Apenas números no número")
 });
 
 const EditarUsuario = () => {
@@ -27,7 +28,6 @@ const EditarUsuario = () => {
     const { register, handleSubmit } = useForm();
 
     const [dados, setDados] = useState()
-    const [userId, setUserId] = useState()
     const [load, setLoad] = useState(true)
     const [userAtual, setUserAtual]  = useState(false)
 
@@ -40,7 +40,6 @@ const EditarUsuario = () => {
             if(!atual && !admin){
                 history.push(`/dashboard`)
             }
-            setUserId(store.getState().auth?.user?.id)
             const {data} = await api.get(`/login/${id}`)
             setDados({
                 name: data.name,
@@ -53,7 +52,7 @@ const EditarUsuario = () => {
             setUserAtual(atual)
         }
         load()
-    },[id,userId]);
+    },[id]);
 
     const onSubmit = (data) => {
         schema.validate(data).then(function (response){
@@ -108,22 +107,22 @@ const EditarUsuario = () => {
                 <img src={EditarUsuarioImagem} alt="Logo"/>
                 <WrapperItens>
                     <WrapperInput>
-                        <label htmlFor="number">Nome:</label>
+                        <label htmlFor="name">Nome:</label>
                         <Input type="text" name="name" ref={register} value={dados.name} placeholder="Nome" onChange={(e)=>{ onInputchange(e)}}/>
                     </WrapperInput>
 
                     <WrapperInput>
-                        <label htmlFor="number">Cpf:</label>
+                        <label htmlFor="cpf">Cpf:</label>
                         <Input type="text" name="cpf" ref={register} value={dados.cpf} placeholder="Cpf" onChange={(e)=>{ onInputchange(e)}}/>
                     </WrapperInput>
 
                     <WrapperInput>
-                        <label htmlFor="number">Rg:</label>
+                        <label htmlFor="rg">Rg:</label>
                         <Input type="text" name="rg" ref={register} value={dados.rg} placeholder="Rg" onChange={(e)=>{ onInputchange(e)}}/>
                     </WrapperInput>
 
                     <WrapperInput>
-                        <label htmlFor="number">E-mail:</label>
+                        <label htmlFor="email">E-mail:</label>
                         <Input type="text" name="email" ref={register} value={dados.email} placeholder="E-mail" onChange={(e)=>{ onInputchange(e)}}/>
                     </WrapperInput>
 
@@ -133,7 +132,6 @@ const EditarUsuario = () => {
                     </WrapperInput>
                 </WrapperItens>
                 <Button type="submit">Salvar Alterações</Button>
-                {}
                 {userAtual && <Button type="button" onClick={handleDelete} >Apagar Conta</Button>}
             </Form>
             )
