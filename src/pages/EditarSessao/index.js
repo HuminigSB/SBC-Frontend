@@ -36,7 +36,7 @@ const EditarSessao = () => {
             setLoad(false)
         }
         load()
-    },[]);
+    },[id]);
 
     const onInputchange = (event) => {
         switch(event.target.name){

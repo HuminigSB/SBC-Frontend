@@ -10,6 +10,7 @@ import EditarSala from '../../assets/editSala.svg'
 import AdicionarCombo from '../../assets/addCombo.svg'
 import AdicionarSessao from '../../assets/adcSessao.svg'
 import EditarSessao from '../../assets/editSessao.svg'
+import Reservar from '../../assets/reservar.svg'
 
 import { Container, Card, Row } from './styles'
 
@@ -35,21 +36,19 @@ const Menu = () => {
         <Container>
            <Row>
                 <Card onClick={adicionarCombo}>
-                    <strong>Adicionar Combo</strong>
+                    <strong>Adicionar Combo (Simulação)</strong>
                     <img src={AdicionarCombo} alt="Adicionar Combo"/>
+                </Card>
+
+                <Card onClick={listarSessoesReservar}>
+                    <strong>Reservar (Simulação)</strong>
+                    <img src={Reservar} alt="Reservar"/>
                 </Card>
 
                 {(isAdmin || isFunc) &&(
                     <Card onClick={adicionarSessao}>
                         <strong>Adicionar Sessão</strong>
                         <img src={AdicionarSessao} alt="Adicionar Sessao"/>
-                    </Card>
-                )}
-
-                {(isAdmin || isFunc) && (
-                    <Card onClick={listarSessoesEditar}>
-                        <strong>Editar Sessão</strong>
-                        <img src={EditarSessao} alt="Editar Sessao"/>
                     </Card>
                 )}
            </Row>
@@ -89,6 +88,14 @@ const Menu = () => {
                     <Card onClick={adicionarUser}>
                         <strong>Adicionar Usuário</strong>
                         <img src={AdicionarIcon} alt="Adicionar funcionario"/>
+                    </Card>
+                )}
+
+
+                {(isAdmin || isFunc) && (
+                    <Card onClick={listarSessoesEditar}>
+                        <strong>Editar Sessão</strong>
+                        <img src={EditarSessao} alt="Editar Sessao"/>
                     </Card>
                 )}
            </Row>
