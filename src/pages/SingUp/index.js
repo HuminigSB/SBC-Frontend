@@ -56,6 +56,7 @@ const SignUp = () => {
             <WrapperItens>
                 <Button type="submit">Criar conta</Button>
                 <LinkTo to="/">já tenho uma conta</LinkTo>
+                <LinkTo to="/helper-signup" style={{ marginBottom: "25px"}}>preciso de ajuda</LinkTo>
             </WrapperItens>
         </Form>
     )

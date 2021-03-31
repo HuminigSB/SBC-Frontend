@@ -6,6 +6,9 @@ import Route from './routes'
 // Sem autenticação
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SingUp'
+import HelperSignUp from '../pages/SingUp/Helper'
+
+// Helper
 
 // Com autenticação
 import Menu from '../pages/Menu'
@@ -27,6 +30,8 @@ const Routes = () => (
     <Switch>
         <Route exact path="/" component={SignIn}/>
         <Route path="/signup" component={SignUp}/>
+
+        <Route path="/helper-signup" component={HelperSignUp}/>
 
         <Route path="/dashboard" component={Menu} isPrivate />
         <Route path="/editarUsuario/:id" component={EditarUsuario} isPrivate />
