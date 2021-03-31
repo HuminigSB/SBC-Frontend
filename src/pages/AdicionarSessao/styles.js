@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Form = styled.form`
-    height: 100vh;
+    height: 100%;
     background: #171717;
     display: flex;
     flex-direction: column;
@@ -37,6 +37,24 @@ export const Input = styled.input`
     }
 `
 
+export const TextArea = styled.textarea`
+    background: #2e2e2e;
+    height: 250px;
+    border: 0;
+    border-radius: 4px;
+    font-size: 18px;
+    padding-left: 10px;
+    margin: 10px 0;
+    width: 300px;
+    color: #666;
+    resize: none;
+
+    &:focus {
+        outline: none !important;
+        border-color: #eb0613;
+        box-shadow: 0px 0px 5px #eb0613;
+    }
+`
 export const Button = styled.button`
     background: transparent;
     height: 50px;

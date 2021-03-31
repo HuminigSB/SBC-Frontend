@@ -10,7 +10,7 @@ import history from '../../services/history'
 import AdicionarSessaoImagem from '../../assets/adcSessao.svg'
 
 // Import de estilo
-import { Form, WrapperItens, Input, Button, WrapperInput} from './styles'
+import { Form, WrapperItens, Input, Button, WrapperInput, TextArea} from './styles'
 
 const schema = Yup.object().shape({
     idSala: Yup.string().matches(/^[0-9]*$/, "Apenas números").required(),
@@ -54,8 +54,8 @@ const AdicionarSessao = () => {
                     <Input type="text" name="title_movie" ref={register} placeholder="Titulo"/>
                 </WrapperInput>
                 <WrapperInput>
-                    <label htmlFor="description">Descrição:</label>
-                    <Input type="text" name="description" ref={register} placeholder="Descrição"/>
+                    <label htmlFor="description">Sinopse:</label>
+                    <TextArea type="text" name="description" ref={register} placeholder="Descrição"/>
                 </WrapperInput>
                 <WrapperInput>
                     <label htmlFor="date">Data:</label>
