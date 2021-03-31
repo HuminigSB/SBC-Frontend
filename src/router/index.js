@@ -19,6 +19,7 @@ import AdicionarSala from '../pages/AdicionarSala'
 import ListarSalas from '../pages/ListarSalas'
 import EditarSala from '../pages/EditarSala'
 import AdicionarSessao from '../pages/AdicionarSessao'
+import EditarSessao from '../pages/EditarSessao'
 
 // Não encontrado
 import NotFound from '../pages/DefaultPage'
@@ -38,6 +39,7 @@ const Routes = () => (
         <Route path="/listarSalas" component={ListarSalas} isPrivate isFunc/>
         <Route path="/editarSala" component={EditarSala} isPrivate isFunc/>
         <Route path="/adicionarSessao" component={AdicionarSessao} isPrivate isFunc/>
+        <Route path="/editarSessao/:id" component={EditarSessao} isPrivate isFunc/>
 
         <Route path="/" component={NotFound}/>
     </Switch>
