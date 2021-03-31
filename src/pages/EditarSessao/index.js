@@ -17,7 +17,7 @@ const schema = Yup.object().shape({
     description: Yup.string().required("A sinopse é obrigatória")
 });
 
-const AdicionarSessao = () => {
+const EditarSessao = () => {
     const { register, handleSubmit } = useForm();
 
     const [dados, setDados] = useState()
@@ -103,4 +103,4 @@ const AdicionarSessao = () => {
     )
 }
 
-export default AdicionarSessao
+export default EditarSessao
