@@ -11,6 +11,7 @@ import SignUp from '../pages/SingUp'
 import Menu from '../pages/Menu'
 import ListarUsuarios from '../pages/ListarUsuarios'
 import AdicionarCombo from '../pages/AdicionarCombo'
+import ListarSessoes from '../pages/ListarSessoes'
 
 // Somente administrador
 import AdicionarFuncionario from '../pages/AdicionarFuncionario'
@@ -32,7 +33,8 @@ const Routes = () => (
         <Route path="/dashboard" component={Menu} isPrivate />
         <Route path="/editarUsuario/:id" component={EditarUsuario} isPrivate />
         <Route path="/adicionarCombo" component={AdicionarCombo} isPrivate />
-
+        <Route path="/listarSessoes/:type" component={ListarSessoes} isPrivate/>
+        
         <Route path="/adicionarFuncionario" component={AdicionarFuncionario} isPrivate isAdmin />
         <Route path="/listarUsuarios" component={ListarUsuarios} isPrivate isAdmin />
         <Route path="/adicionarSala" component={AdicionarSala} isPrivate isFunc/>
@@ -40,7 +42,7 @@ const Routes = () => (
         <Route path="/editarSala" component={EditarSala} isPrivate isFunc/>
         <Route path="/adicionarSessao" component={AdicionarSessao} isPrivate isFunc/>
         <Route path="/editarSessao/:id" component={EditarSessao} isPrivate isFunc/>
-
+        
         <Route path="/" component={NotFound}/>
     </Switch>
 )
