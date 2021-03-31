@@ -2,6 +2,7 @@
 import React,{useEffect,useState} from 'react'
 import dateFormat from 'dateformat'
 import {isBefore, parseISO} from 'date-fns'
+import {toast} from 'react-toastify'
 
 // Import de arquivos auxiliares
 import api from '../../services/api'
@@ -28,6 +29,10 @@ const ListarSessoes = () => {
                     sessoesBusca.push(sessao)
                 }
             })
+            if(sessoesBusca.length === 0){
+                toast.warning('Nenhuma sessão ativa!')
+                history.push('/dashboard')
+            }
             setSessao(sessoesBusca)
             setLoad(false)
         }
