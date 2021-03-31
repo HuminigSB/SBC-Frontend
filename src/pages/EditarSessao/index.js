@@ -10,7 +10,7 @@ import history from '../../services/history'
 import EditarSessaoImagem from '../../assets/editSessao.svg'
 
 // Import de estilo
-import { Form, WrapperItens, Input, Button, WrapperInput} from './styles'
+import { Form, WrapperItens, Input, Button, WrapperInput, TextArea} from './styles'
 
 const schema = Yup.object().shape({
     title_movie: Yup.string().required("O titulo é obrigatório"),
@@ -58,7 +58,7 @@ const EditarSessao = () => {
         schema.validate(data).then(function (response){
             api.put(`/sessao/${id}`, data).then(function (response){
                 toast.success("Sessão editada com sucesso!")
-                history.push('/dashboard')
+                history.push('/listarSessoes/0')
             }).catch(function(error){
                 toast.error(error.response.data.error)
             })
@@ -70,7 +70,7 @@ const EditarSessao = () => {
     const handleDelete = () => {
         api.delete(`/sessao/${id}`).then(function (response){
             toast.success(response.data.success)
-            history.push('/dashboard')
+            history.push('/listarSessoes/0')
         }).catch(function(error){
             toast.error(error.response.data.error)
         })
@@ -87,8 +87,8 @@ const EditarSessao = () => {
                     <Input type="text" name="title_movie" ref={register} value={dados.titulo} placeholder="Titulo" onChange={(e)=>{ onInputchange(e)}}/>
                 </WrapperInput>
                 <WrapperInput>
-                    <label htmlFor="description">Descrição:</label>
-                    <Input type="text" name="description" ref={register} value={dados.descricao} placeholder="Descrição" onChange={(e)=>{ onInputchange(e)}}/>
+                    <label htmlFor="description">Sinopse:</label>
+                    <TextArea type="text" name="description" ref={register} value={dados.descricao} placeholder="Descrição" onChange={(e)=>{ onInputchange(e)}}/>
                 </WrapperInput>
                 <WrapperInput>
                     <label htmlFor="linkImg">Link da imagem do filme:</label>
@@ -96,7 +96,7 @@ const EditarSessao = () => {
                 </WrapperInput>    
             </WrapperItens>
             <Button type="submit">Editar sessao</Button>
-            <Button type="button" onClick={handleDelete} >Excluirr sessao</Button>
+            <Button type="button" onClick={handleDelete} >Excluir sessao</Button>
         </Form>
         )
     }</>
