@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
     height: 100%;
@@ -12,7 +11,7 @@ export const Container = styled.div`
     h1{
         color: #fff;
         margin-bottom: 25px;
-        margin-top: 150px; 
+        margin-top: 75px; 
     }
 
     button{
@@ -42,6 +41,7 @@ export const Content = styled.div`
     display: flex;
     max-width: 1200px;
     margin: 5px 0;
+    align-items: center;
 
     strong{
         font-size: 20px;
@@ -56,6 +56,13 @@ export const Content = styled.div`
 
     p{
         color: #fff;
+        margin: 15px 0;
+        font-size: 16px;
+    }
+
+    img{
+        margin: 0 auto;
+        height: 150px;
     }
 `
 
@@ -63,14 +70,4 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: left;
-`
-
-export const LinkTo = styled(Link)`
-    color: #666;
-    margin: 15px 0;
-
-    &:hover{
-        text-decoration: underline;
-        color: #666;
-    }
 `

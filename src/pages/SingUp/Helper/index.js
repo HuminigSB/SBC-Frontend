@@ -1,16 +1,12 @@
 // Import de bibliotecas
 import React from 'react'
 
-// Import de arquivos auxiliares
-import Logo from '../../../assets/logo-white.png'
-
 // Import de estilo
 import { Container, Content, LinkTo, Wrapper } from './styles'
 
 const HelperSignUp = () => {
     return (
         <Container>
-            <img src={Logo} alt="Logo"/>
             <h1>Ajuda online para o cadastro</h1>
 
             <Wrapper>
@@ -55,7 +51,7 @@ const HelperSignUp = () => {
                 </Content>
             </Wrapper>
 
-            <LinkTo to="/signup">voltar ao cadastro</LinkTo>
+            <button onClick={() => { window.history.back() }}>voltar para o cadastro</button>
         </Container>
     )
 }
