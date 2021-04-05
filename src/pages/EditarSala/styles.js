@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
     display: flex;
@@ -114,4 +115,15 @@ export const Icon = styled.img`
     height: 40px;
     margin: 10px 15px 0px 15px;
     opacity: ${props => props.active ? '1': '0.2'};
+`
+
+export const LinkTo = styled(Link)`
+    color: #666;
+    margin: 15px 0;
+    text-align: center;
+
+    &:hover{
+        text-decoration: underline;
+        color: #666;
+    }
 `

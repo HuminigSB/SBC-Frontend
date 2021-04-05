@@ -12,7 +12,7 @@ import DoubleIcon from '../../assets/double-c.png'
 import WheelchairIcon from '../../assets/wheel-c.png'
 
 // Impot Estilos
-import { Container, Table, EditScreen, WrapperItens, Icon } from './styles'
+import { Container, Table, EditScreen, WrapperItens, Icon, LinkTo } from './styles'
 
 // Validação
 const schema = Yup.object().shape({
@@ -199,6 +199,8 @@ const EditarSala = () => {
                         <button type="submit">
                             Alterar poltrona
                         </button>
+
+                        <LinkTo to="/helper-sala">preciso de ajuda</LinkTo>
                     </WrapperItens>
                 </EditScreen>    
             )}
