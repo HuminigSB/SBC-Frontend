@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import {toast} from 'react-toastify'
 import * as Yup from 'yup'
+import {FaQuestionCircle} from 'react-icons/fa'
 
 // Import de arquivos auxiliares
 import api from '../../services/api'
@@ -10,7 +11,7 @@ import history from '../../services/history'
 import AdicionarSessaoImagem from '../../assets/adcSessao.svg'
 
 // Import de estilo
-import { Form, WrapperItens, Input, Button, WrapperInput, TextArea} from './styles'
+import { Form, WrapperItens, Input, Button, WrapperInput, TextArea, WrapperButons} from './styles'
 
 const schema = Yup.object().shape({
     idSala: Yup.string().matches(/^[0-9]*$/, "Apenas números").required(),
@@ -62,7 +63,7 @@ const AdicionarSessao = () => {
                     <Input type="date" name="data" ref={register} placeholder="Data"/>
                 </WrapperInput>
                 <WrapperInput>
-                    <label htmlFor="inicio">Horario de Inicio:</label>
+                    <label htmlFor="inicio">Horário de Início:</label>
                     <Input type="time" name="inicio" ref={register} placeholder="Horario de Inicio"/>
                 </WrapperInput>
                 <WrapperInput>
@@ -78,7 +79,10 @@ const AdicionarSessao = () => {
                     <Input type="text" name="linkImg" ref={register} placeholder="Link da imagem do filme"/>
                 </WrapperInput>    
             </WrapperItens>
-            <Button type="submit">Criar sessao</Button>
+            <WrapperButons>
+                <Button type="submit">Criar sessao</Button>
+                <Button help={true} onClick={()=>{history.push('/helperAdicionarSessao')}}><FaQuestionCircle/></Button>
+            </WrapperButons>
         </Form>
     )
 }
