@@ -19,13 +19,6 @@ export const WrapperItens = styled.div`
     align-items: center;
 `
 
-export const WrapperButons = styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 306px;
-    justify-content: space-between;
-`
-
 export const Input = styled.input`
     background: #2e2e2e;
     height: 50px;
@@ -36,12 +29,6 @@ export const Input = styled.input`
     margin: 10px 0;
     width: 300px;
     color: #666;
-
-    &:focus {
-        outline: none !important;
-        border-color: #eb0613;
-        box-shadow: 0px 0px 5px #eb0613;
-    }
 `
 
 export const TextArea = styled.textarea`
@@ -55,33 +42,39 @@ export const TextArea = styled.textarea`
     width: 300px;
     color: #666;
     resize: none;
-
-    &:focus {
-        outline: none !important;
-        border-color: #eb0613;
-        box-shadow: 0px 0px 5px #eb0613;
-    }
 `
-export const Button = styled.button`
-    display: flex;
+export const ButtonHelp = styled.button`
     background: transparent;
     height: 50px;
     border: 1px solid #666;
     border-radius: 4px;
     font-size: 18px;
+    padding-left: 10px;
     margin: 10px 0;
-    width: ${ props => props.help ? '50px' : '240px'};;
-    color: ${ props => props.help ? '#fff' : '#666'};
+    width: 300px;
+    color: #666;
     font-weight: bold;
     transition: all 0.4s;
-    align-items: center;
-    justify-content: center;
+`
+export const Button = styled.button`
+    background: transparent;
+    height: 50px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    font-size: 18px;
+    padding-left: 10px;
+    margin: 10px 0;
+    width: 300px;
+    color: #666;
+    font-weight: bold;
+    transition: all 0.4s;
 
     &:hover{
         cursor: pointer;
-        background: ${ props => props.help ? '#fff' : '#b1060f'};
+        background: #b1060f;
         border: 1px solid #666;
-        color: ${ props => props.help ? '#666' : '#fff'};;
+        color: #b1060f;
+        color: #fff;
     }
 `
 
@@ -92,5 +85,18 @@ export const WrapperInput = styled.div`
     label{
         color: #ccc;
         font-size: 13px;
+    }
+`
+
+export const WrapperHelp = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+    text-align: justify;
+    p{
+        font-size: 18px;
+        color: #666;
+        margin-bottom: 10px
     }
 `
