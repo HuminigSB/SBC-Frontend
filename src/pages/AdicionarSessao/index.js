@@ -12,7 +12,7 @@ import { Form, WrapperItens, Input, Button, WrapperInput, TextArea, WrapperButon
 import { isBefore } from 'date-fns'
 
 const schema = Yup.object().shape({
-    idSala: Yup.string().matches(/^[0-9]*$/, "Apenas números").required(),
+    id_sala: Yup.string().matches(/^[0-9]*$/, "Apenas números").required(),
     title_movie: Yup.string().required("O titulo é obrigatório"),
     description: Yup.string().required("A sinopse é obrigatória"),
     data: Yup.string().required("A data é obrigatória"),
@@ -29,13 +29,15 @@ const AdicionarSessao = () => {
         }else{
             schema.validate(data).then(function (response){
                 const dataVector = data.data.split('-')
-                const treatedData = {idSala: data.idSala,
+                const treatedData = {
+                    id_sala: data.id_sala,
                     title_movie: data.title_movie,
                     description: data.description,
                     data: dataVector[2]+"/"+dataVector[1]+"/"+dataVector[0],
                     inicio: new Date(data.data+" "+data.inicio),
                     duracao: data.duracao,
-                    linkImg: data.linkImg}
+                    link_img: data.link_img
+                }
                 api.post('/sessao', treatedData).then(function (response){
                     toast.success("Sessão criada com sucesso!")
                     history.push('/dashboard')
@@ -74,12 +76,12 @@ const AdicionarSessao = () => {
                     <Input type="time" name="duracao" ref={register} defaultValue="00:00"/>
                 </WrapperInput>
                 <WrapperInput>
-                    <label htmlFor="idSala">ID da Sala:</label>
-                    <Input type="text" name="idSala" ref={register} placeholder="ID da Sala"/>
+                    <label htmlFor="id_sala">ID da Sala:</label>
+                    <Input type="text" name="id_sala" ref={register} placeholder="ID da Sala"/>
                 </WrapperInput>
                 <WrapperInput>
-                    <label htmlFor="linkImg">Link da imagem do filme:</label>
-                    <Input type="text" name="linkImg" ref={register} placeholder="Link da imagem do filme"/>
+                    <label htmlFor="link_img">Link da imagem do filme:</label>
+                    <Input type="text" name="link_img" ref={register} placeholder="Link da imagem do filme"/>
                 </WrapperInput>    
             </WrapperItens>
             <WrapperButons>

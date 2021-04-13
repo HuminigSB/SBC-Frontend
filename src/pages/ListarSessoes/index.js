@@ -20,8 +20,8 @@ const ListarSessoes = () => {
             const {data} = await api.get('/sessao/-1')
             const sessoesBusca = []
             data.map(sessao => {
-                if(!sessao.linkImg){
-                    sessao.linkImg = noImage
+                if(!sessao.link_img){
+                    sessao.link_img = noImage
                 }
                 if(!isBefore(parseISO(sessao.inicio),new Date())){
                     sessoesBusca.push(sessao)
@@ -53,7 +53,7 @@ const ListarSessoes = () => {
         <ContainerTela>
             {!load && sessoes.map(sessao => 
                 <Button key={sessao.id} onClick={()=>{ handleClick(sessao.id) }}>
-                    <img src={sessao.linkImg} alt="cartaz do filme"/>
+                    <img src={sessao.link_img} alt="cartaz do filme"/>
                     <p>{sessao.title_movie}</p>
                     <b>{sessao.data}</b>
                     <small>Inicio: {dateFormat(sessao.inicio, 'HH:MM')}</small>  
