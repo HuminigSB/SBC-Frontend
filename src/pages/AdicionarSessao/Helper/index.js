@@ -54,16 +54,16 @@ const AdicionarSessao = () => {
                     </WrapperHelp>                    
                 </WrapperInput>
                 <WrapperInput>
-                    <label htmlFor="idSala">ID da Sala:</label>
+                    <label htmlFor="id_sala">ID da Sala:</label>
                     <WrapperHelp>
-                        <Input type="text" name="idSala" ref={register} placeholder="ID da Sala" disabled/>
+                        <Input type="text" name="id_sala" ref={register} placeholder="ID da Sala" disabled/>
                         <p>digite o id da sala nesse campo (aceita apenas números e é obrigatório)</p>
                     </WrapperHelp>
                 </WrapperInput>
                 <WrapperInput>
-                    <label htmlFor="linkImg">Link da imagem do filme:</label>
+                    <label htmlFor="link_img">Link da imagem do filme:</label>
                     <WrapperHelp>
-                        <Input type="text" name="linkImg" ref={register} placeholder="Link da imagem do filme" disabled/>
+                        <Input type="text" name="link_img" ref={register} placeholder="Link da imagem do filme" disabled/>
                         <p>digite o link da imagem do cartaz do filme nesse campo (caso não seja informado na listagem sera exibida uma imagem indicando a ausência de imagem)</p>
                     </WrapperHelp>                    
                 </WrapperInput>    

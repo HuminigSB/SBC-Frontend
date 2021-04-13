@@ -28,7 +28,7 @@ const EditarSessao = () => {
             setDados({
                 titulo: data.title_movie,
                 descricao: data.description,
-                linkImg: data.linkImg
+                link_img: data.link_img
               })
             setLoad(false)
         }
@@ -43,8 +43,8 @@ const EditarSessao = () => {
             case "description":
                 setDados({...dados, descricao : event.target.value})
                 break
-            case "linkImg":
-                setDados({...dados, linkImg : event.target.value})
+            case "link_img":
+                setDados({...dados, link_img : event.target.value})
                 break
             default:
                 break
@@ -88,8 +88,8 @@ const EditarSessao = () => {
                         <TextArea type="text" name="description" ref={register} value={dados.descricao} placeholder="Descrição" onChange={(e)=>{ onInputchange(e)}}/>
                     </WrapperInput>
                     <WrapperInput>
-                        <label htmlFor="linkImg">Link da imagem do filme:</label>
-                        <Input type="text" name="linkImg" ref={register} value={dados.linkImg} placeholder="Link da imagem do filme" onChange={(e)=>{ onInputchange(e)}}/>
+                        <label htmlFor="link_img">Link da imagem do filme:</label>
+                        <Input type="text" name="link_img" ref={register} value={dados.link_img} placeholder="Link da imagem do filme" onChange={(e)=>{ onInputchange(e)}}/>
                     </WrapperInput>    
                 </WrapperItens>
                 <Button type="submit">Editar sessao</Button>
