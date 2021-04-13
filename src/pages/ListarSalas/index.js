@@ -1,14 +1,11 @@
-// Import de bibliotecas
 import React,{useEffect,useState} from 'react'
 import {toast} from 'react-toastify'
 import {FaTrash,FaEdit} from 'react-icons/fa'
 
-// Import de arquivos auxiliares
 import api from '../../services/api'
 import history from '../../services/history'
 import IconsSalas from '../../assets/listSalas.svg'
 
-// Import de estilo
 import {ContainerTela, Tabela, ButtonTable} from './styles'
 
 const ListarSalas = () => {  

@@ -1,8 +1,6 @@
-// Import de bibliotecas
 import React from 'react'
 
-// Import de estilo
-import { Container, Content, LinkTo, Wrapper } from './styles'
+import { Container, Content, Wrapper } from './styles'
 
 const HelperSignUp = () => {
     return (

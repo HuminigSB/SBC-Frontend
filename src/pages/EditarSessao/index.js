@@ -1,15 +1,12 @@
-// Import de bibliotecas
 import React,{useEffect,useState} from 'react'
 import { useForm } from "react-hook-form"
 import {toast} from 'react-toastify'
 import * as Yup from 'yup'
 
-// Import de arquivos auxiliares
 import api from '../../services/api'
 import history from '../../services/history'
 import EditarSessaoImagem from '../../assets/editSessao.svg'
 
-// Import de estilo
 import { Form, WrapperItens, Input, Button, WrapperInput, TextArea} from './styles'
 
 const schema = Yup.object().shape({
@@ -78,28 +75,27 @@ const EditarSessao = () => {
 
     return (
         <>{!load && (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            <img src={EditarSessaoImagem} alt="EditarSessaoImagem"/>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+                <img src={EditarSessaoImagem} alt="EditarSessaoImagem"/>
 
-            <WrapperItens>
-                <WrapperInput>
-                    <label htmlFor="title_movie">Título:</label>
-                    <Input type="text" name="title_movie" ref={register} value={dados.titulo} placeholder="Titulo" onChange={(e)=>{ onInputchange(e)}}/>
-                </WrapperInput>
-                <WrapperInput>
-                    <label htmlFor="description">Sinopse:</label>
-                    <TextArea type="text" name="description" ref={register} value={dados.descricao} placeholder="Descrição" onChange={(e)=>{ onInputchange(e)}}/>
-                </WrapperInput>
-                <WrapperInput>
-                    <label htmlFor="linkImg">Link da imagem do filme:</label>
-                    <Input type="text" name="linkImg" ref={register} value={dados.linkImg} placeholder="Link da imagem do filme" onChange={(e)=>{ onInputchange(e)}}/>
-                </WrapperInput>    
-            </WrapperItens>
-            <Button type="submit">Editar sessao</Button>
-            <Button type="button" onClick={handleDelete} >Excluir sessao</Button>
-        </Form>
-        )
-    }</>
+                <WrapperItens>
+                    <WrapperInput>
+                        <label htmlFor="title_movie">Título:</label>
+                        <Input type="text" name="title_movie" ref={register} value={dados.titulo} placeholder="Titulo" onChange={(e)=>{ onInputchange(e)}}/>
+                    </WrapperInput>
+                    <WrapperInput>
+                        <label htmlFor="description">Sinopse:</label>
+                        <TextArea type="text" name="description" ref={register} value={dados.descricao} placeholder="Descrição" onChange={(e)=>{ onInputchange(e)}}/>
+                    </WrapperInput>
+                    <WrapperInput>
+                        <label htmlFor="linkImg">Link da imagem do filme:</label>
+                        <Input type="text" name="linkImg" ref={register} value={dados.linkImg} placeholder="Link da imagem do filme" onChange={(e)=>{ onInputchange(e)}}/>
+                    </WrapperInput>    
+                </WrapperItens>
+                <Button type="submit">Editar sessao</Button>
+                <Button type="button" onClick={handleDelete} >Excluir sessao</Button>
+            </Form>
+        )}</>
     )
 }
 

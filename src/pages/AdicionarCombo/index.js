@@ -1,15 +1,12 @@
-// Import de bibliotecas
 import React from 'react'
 import {toast} from 'react-toastify'
 
-// Import de arquivos auxiliares
 import history from '../../services/history'
 import NoneIcon from '../../assets/none.png'
 import PipocaIcon from '../../assets/pipoca.png'
 import RefriIcon from '../../assets/refri.png'
 import PipocaRefriIcon from '../../assets/pipocaerefri.png'
 
-// Import de estilo
 import { Container, Button, Row } from './styles'
 
 const AdicionarCombo = () => {  

@@ -1,10 +1,7 @@
-// Import de bibliotecas
 import React from 'react'
 
-// Import de arquivos auxiliares
 import Example from '../../../assets/exemplo-sala.png'
 
-// Import de estilo
 import { Container, Content, Wrapper } from './styles'
 
 const HelperSignUp = () => {

@@ -1,20 +1,16 @@
-// Import de bibliotecas
 import React, { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form"
 import {toast} from 'react-toastify'
 import * as Yup from 'yup'
 
-// Import de arquivos auxiliares
 import api from '../../services/api'
 import EconomicIcon from '../../assets/single-c.png'
 import VipIcon from '../../assets/vip-c.png'
 import DoubleIcon from '../../assets/double-c.png'
 import WheelchairIcon from '../../assets/wheel-c.png'
 
-// Impot Estilos
 import { Container, Table, EditScreen, WrapperItens, Icon, LinkTo } from './styles'
 
-// Validação
 const schema = Yup.object().shape({
     numero: Yup.string().matches(/^[0-9]*$/, "Apenas números na poltrona")
 });
