@@ -13,27 +13,29 @@ import AdicionarSessaoImagem from '../../assets/adcSessao.svg'
 // Import de estilo
 import { Form, WrapperItens, Input, Button, WrapperInput, TextArea, WrapperButons} from './styles'
 
+
 const schema = Yup.object().shape({
     idSala: Yup.string().matches(/^[0-9]*$/, "Apenas números").required(),
     title_movie: Yup.string().required("O titulo é obrigatório"),
     description: Yup.string().required("A sinopse é obrigatória"),
     data: Yup.string().required("A data é obrigatória"),
-    inicio: Yup.date().required("O horário inicial é obrigatório"),
-    duracao: Yup.string().required("O horário final é obrigatório")
+    inicio: Yup.string().matches(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/,"O horário de inicio é invalido").required("O horário inicial é obrigatório"),
+    duracao: Yup.string().matches(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/,"O duração é invalida").required("O horário final é obrigatório")
 });
 
 const AdicionarSessao = () => {
     const { register, handleSubmit } = useForm();
 
     const onSubmit = (data) => {
-        const treatedData = {idSala: data.idSala,
-        title_movie: data.title_movie,
-        description: data.description,
-        data: data.data,
-        inicio: new Date(data.data+" "+data.inicio),
-        duracao: data.duracao,
-        linkImg: data.linkImg}
-        schema.validate(treatedData).then(function (response){
+        schema.validate(data).then(function (response){
+            const dataVector = data.data.split('-')
+            const treatedData = {idSala: data.idSala,
+                title_movie: data.title_movie,
+                description: data.description,
+                data: dataVector[2]+"/"+dataVector[1]+"/"+dataVector[0],
+                inicio: new Date(data.data+" "+data.inicio),
+                duracao: data.duracao,
+                linkImg: data.linkImg}
             api.post('/sessao', treatedData).then(function (response){
                 toast.success("Sessão criada com sucesso!")
                 history.push('/dashboard')

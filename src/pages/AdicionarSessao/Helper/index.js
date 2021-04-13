@@ -53,7 +53,7 @@ const AdicionarSessao = () => {
                     <label htmlFor="duracao">Duração:</label>
                     <WrapperHelp>
                         <Input type="time" name="duracao" ref={register} defaultValue="00:00" disabled/>
-                        <p>escolha a duração do filme (esse campo é obrigatório)</p>
+                        <p>escolha a duração do filme no formato HH:MM (esse campo é obrigatório)</p>
                     </WrapperHelp>                    
                 </WrapperInput>
                 <WrapperInput>
