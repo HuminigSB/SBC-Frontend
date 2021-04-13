@@ -1,18 +1,15 @@
-// Import de bibliotecas
 import React,{useEffect,useState} from 'react'
 import { useForm } from "react-hook-form"
 import {toast} from 'react-toastify'
 import {useDispatch} from 'react-redux'
 import * as Yup from 'yup'
 
-// Import de arquivos auxiliares
 import EditarUsuarioImagem from '../../assets/editUser.svg'
 import api from '../../services/api'
 import history from '../../services/history'
 import {store} from '../../store/index'
 import {signOut} from '../../store/modules/auth/actions'
 
-// Import de estilo
 import { Form, WrapperItens, Input, Button, WrapperInput} from './styles'
 
 const schema = Yup.object().shape({
@@ -64,7 +61,6 @@ const EditarUsuario = () => {
         }).catch(function(error){
             toast.error(error.message)
         })
-        
     }
 
     const onInputchange = (event) => {

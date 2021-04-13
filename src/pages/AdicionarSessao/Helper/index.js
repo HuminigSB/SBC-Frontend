@@ -1,12 +1,9 @@
-// Import de bibliotecas
 import React from 'react'
 import { useForm } from "react-hook-form"
 
-// Import de arquivos auxiliares
 import history from '../../../services/history'
 import AdicionarSessaoImagem from '../../../assets/adcSessao.svg'
 
-// Import de estilo
 import { Form, WrapperItens, Input, Button, WrapperInput, TextArea, WrapperHelp, ButtonHelp} from './styles'
 
 const AdicionarSessao = () => {

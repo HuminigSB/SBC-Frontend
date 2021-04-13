@@ -19,10 +19,12 @@ export const Tabela = styled.table`
         padding: 15px;
         background-color:  #666;
     }
+
     td{
         text-align: center;
         border: 10px solid #171717;
     }
+    
     tr:nth-child(2n){
         background-color: rgba(180, 180, 180, 0.2);
         td{

@@ -1,18 +1,14 @@
-// Import de bibliotecas
 import React from 'react'
 import {toast} from 'react-toastify'
 import { useForm } from "react-hook-form"
 import {useDispatch} from 'react-redux'
 import * as Yup from 'yup'
 
-// Import de arquivos auxiliares
 import Logo from '../../assets/logo-white.png'
 import {signInRequest} from '../../store/modules/auth/actions'
 
-// Import de estilo
 import { Form, WrapperItens, Input, Button, LinkTo } from './styles'
 
-// Validação
 const schema = Yup.object().shape({
     username: Yup.string().required('O nome de usuário é obrigatório.'),
     password: Yup.string().required('A senha é obrigatória.')

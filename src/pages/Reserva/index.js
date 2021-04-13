@@ -1,14 +1,11 @@
-// Import de bibliotecas
 import React, { useEffect, useState } from 'react'
 
-// Impot Estilos
 import { Container, Table, Icon, WrapperValues } from './styles'
 import EconomicIcon from '../../assets/single-c.png'
 import VipIcon from '../../assets/vip-c.png'
 import DoubleIcon from '../../assets/double-c.png'
 import WheelchairIcon from '../../assets/wheel-c.png'
 
-// Import de arquivos auxiliares
 import api from '../../services/api'
 
 const Reserva = () => {

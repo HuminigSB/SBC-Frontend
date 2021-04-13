@@ -1,17 +1,14 @@
 /* eslint-disable array-callback-return */
-// Import de bibliotecas
 import React,{useEffect,useState} from 'react'
 import dateFormat from 'dateformat'
 import {isBefore, parseISO} from 'date-fns'
 import {toast} from 'react-toastify'
 
-// Import de arquivos auxiliares
 import api from '../../services/api'
 import history from '../../services/history'
 import noImage from '../../assets/noImage.png'
 import {store} from '../../store/index'
 
-// Import de estilo
 import {ContainerTela, Button} from './styles'
 
 const ListarSessoes = () => {  
@@ -40,13 +37,15 @@ const ListarSessoes = () => {
         load()
     },[]);
     
-    const handleClick= (data,tipo) =>{
+    const handleClick= (data) =>{
         const type = +window.location.href.split("http://localhost:3000/listarSessoes/").pop()
         if(type === 0 && ('admin'===store.getState().auth.user.profile || 'funcionario'===store.getState().auth.user.profile)){
             history.push(`/editarSessao/${data}`)
-        }
-        if(type === 1){
+        }else if(type === 1){
             history.push(`/reservar/${data}`)
+        }else {
+            toast.error("Link adulterado!")
+            history.push('/dashboard')
         }
     }
 
@@ -55,9 +54,10 @@ const ListarSessoes = () => {
             {!load && sessoes.map(sessao => 
                 <Button key={sessao.id} onClick={()=>{ handleClick(sessao.id) }}>
                     <img src={sessao.linkImg} alt="cartaz do filme"/>
-                    <h1>{sessao.title_movie}</h1>
+                    <p>{sessao.title_movie}</p>
                     <b>{sessao.data}</b>
-                    <small>{dateFormat(sessao.inicio, 'HH:MM')}</small>        
+                    <small>Inicio: {dateFormat(sessao.inicio, 'HH:MM')}</small>  
+                    <small>Duração: {sessao.duracao}</small>            
                 </Button>
             )}
         </ContainerTela>

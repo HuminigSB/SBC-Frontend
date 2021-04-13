@@ -1,15 +1,12 @@
-// Import de bibliotecas
 import React from 'react'
 import { useForm } from "react-hook-form"
 import {toast} from 'react-toastify'
 import * as Yup from 'yup'
 
-// Import de arquivos auxiliares
 import api from '../../services/api'
 import history from '../../services/history'
 import AdicionarFuncionarioImagem from '../../assets/adcFunc.svg'
 
-// Import de estilo
 import { Form, WrapperItens, Input, Button, Select} from './styles'
 
 const schema = Yup.object().shape({
@@ -56,7 +53,7 @@ const AdicionarFuncionario = () => {
                 <Input type="password" name="password" ref={register} placeholder="Senha de acesso"/>
                 <Select name="profile" ref={register}>
                     <option value="funcionario">Funcionario</option>
-                    <option value="admin">Gerente</option>
+                    <option value="admin">Administrador</option>
                 </Select>
             </WrapperItens>
             <Button type="submit">Criar conta</Button>

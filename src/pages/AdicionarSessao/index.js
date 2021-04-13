@@ -1,18 +1,15 @@
-// Import de bibliotecas
 import React from 'react'
 import { useForm } from "react-hook-form"
 import {toast} from 'react-toastify'
 import * as Yup from 'yup'
 import {FaQuestionCircle} from 'react-icons/fa'
 
-// Import de arquivos auxiliares
 import api from '../../services/api'
 import history from '../../services/history'
 import AdicionarSessaoImagem from '../../assets/adcSessao.svg'
 
-// Import de estilo
 import { Form, WrapperItens, Input, Button, WrapperInput, TextArea, WrapperButons} from './styles'
-
+import { isBefore } from 'date-fns'
 
 const schema = Yup.object().shape({
     idSala: Yup.string().matches(/^[0-9]*$/, "Apenas números").required(),
@@ -27,24 +24,28 @@ const AdicionarSessao = () => {
     const { register, handleSubmit } = useForm();
 
     const onSubmit = (data) => {
-        schema.validate(data).then(function (response){
-            const dataVector = data.data.split('-')
-            const treatedData = {idSala: data.idSala,
-                title_movie: data.title_movie,
-                description: data.description,
-                data: dataVector[2]+"/"+dataVector[1]+"/"+dataVector[0],
-                inicio: new Date(data.data+" "+data.inicio),
-                duracao: data.duracao,
-                linkImg: data.linkImg}
-            api.post('/sessao', treatedData).then(function (response){
-                toast.success("Sessão criada com sucesso!")
-                history.push('/dashboard')
+        if(isBefore(new Date(data.data+" "+data.inicio),new Date())){
+            toast.error("Impossível inserir sessão antes da data atual.")
+        }else{
+            schema.validate(data).then(function (response){
+                const dataVector = data.data.split('-')
+                const treatedData = {idSala: data.idSala,
+                    title_movie: data.title_movie,
+                    description: data.description,
+                    data: dataVector[2]+"/"+dataVector[1]+"/"+dataVector[0],
+                    inicio: new Date(data.data+" "+data.inicio),
+                    duracao: data.duracao,
+                    linkImg: data.linkImg}
+                api.post('/sessao', treatedData).then(function (response){
+                    toast.success("Sessão criada com sucesso!")
+                    history.push('/dashboard')
+                }).catch(function(error){
+                    toast.error(error.response.data.error)
+                })
             }).catch(function(error){
-                toast.error(error.response.data.error)
+                toast.error(error.message)
             })
-        }).catch(function(error){
-            toast.error(error.message)
-        })
+        }
     }
 
     return (

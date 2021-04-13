@@ -1,18 +1,14 @@
-// Import de bibliotecas
 import React from 'react'
 import {toast} from 'react-toastify'
 import { useForm } from "react-hook-form"
 import {useDispatch} from 'react-redux'
 import * as Yup from 'yup'
 
-// Import de arquivos auxiliares
 import Logo from '../../assets/logo-white.png'
 import {signUpRequest} from '../../store/modules/auth/actions';
 
-// Import de estilo
 import { Form, WrapperItens, Input, Button, Select, LinkTo } from './styles'
 
-// Validação
 const schema = Yup.object().shape({
     name: Yup.string().matches(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/, "Apenas letras no nome").required("O nome de usuário é obrigatório."),
     email: Yup.string().email("O e-mail precisa ser válido.").required("O e-mail é obrigatório."),

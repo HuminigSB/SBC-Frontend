@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
     height: 100%;
@@ -63,14 +62,4 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: left;
-`
-
-export const LinkTo = styled(Link)`
-    color: #666;
-    margin: 15px 0;
-
-    &:hover{
-        text-decoration: underline;
-        color: #666;
-    }
 `
